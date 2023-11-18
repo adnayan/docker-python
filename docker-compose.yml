@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  docker-base-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GROUP_ID: ${GROUP_ID}
+        USER_ID: ${USER_ID}
+        GROUP_NAME: ${GROUP_NAME}
+        USER_NAME: ${USER_NAME}
+    volumes:
+      - .:/home/${USER_NAME}/app
+    command: ["tail", "-f", "/dev/null"]
